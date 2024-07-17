@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class IProductService implements ProductService {
@@ -27,17 +28,33 @@ public class IProductService implements ProductService {
     }
 
     @Override
-    public ProductDTO save(ProductDTO product) {
-        return null;
+    public ProductDTO save(ProductDTO productDTO) {
+        Product savedProduct = productRepository.save(productMapper.productDTOToProduct(productDTO));
+        return productMapper.productToProductDTO(savedProduct);
     }
 
     @Override
-    public ProductDTO update(ProductDTO product) {
-        return null;
+    public ProductDTO update(ProductDTO updatedProductDTO , long id) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        if (productOptional.isPresent()){
+            Product product = productOptional.get();
+            product.setName(updatedProductDTO.getName());
+            product.setPrice(updatedProductDTO.getPrice());
+            product.setCategory(updatedProductDTO.getCategory());
+            return  productMapper.productToProductDTO(product);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public ProductDTO findById(long id) {
+        Optional<Product> productOptional =  productRepository.findById(id);
+        return productOptional.map(product -> productMapper.productToProductDTO(product)).orElse(null);
     }
 
     @Override
     public void delete(Long id) {
-
+        productRepository.deleteById(id);
     }
 }
