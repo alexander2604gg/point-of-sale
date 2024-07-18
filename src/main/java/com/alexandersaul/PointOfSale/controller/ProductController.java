@@ -1,7 +1,7 @@
 package com.alexandersaul.PointOfSale.controller;
 
 import com.alexandersaul.PointOfSale.dto.ProductDTO;
-import com.alexandersaul.PointOfSale.service.ProductService;
+import com.alexandersaul.PointOfSale.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 public class ProductController {
 
     @Autowired
-    private ProductService productService;
+    private IProductService productService;
 
     @GetMapping("/resource")
     public ResponseEntity<List<ProductDTO>> getAllProducts (){

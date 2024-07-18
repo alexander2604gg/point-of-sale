@@ -1,10 +1,10 @@
 package com.alexandersaul.PointOfSale.service;
 
 import com.alexandersaul.PointOfSale.dto.CategoryDTO;
-import com.alexandersaul.PointOfSale.entities.Category;
+
 import java.util.List;
 
-public interface CategoryService {
+public interface ICategoryService {
 
     List<CategoryDTO> getAll();
     CategoryDTO save(CategoryDTO category);

@@ -4,7 +4,7 @@ import com.alexandersaul.PointOfSale.dto.ProductDTO;
 import com.alexandersaul.PointOfSale.entities.Product;
 import com.alexandersaul.PointOfSale.mapper.ProductMapper;
 import com.alexandersaul.PointOfSale.repository.ProductRepository;
-import com.alexandersaul.PointOfSale.service.ProductService;
+import com.alexandersaul.PointOfSale.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class IProductService implements ProductService {
+public class ProductService implements IProductService {
 
     @Autowired
     private ProductRepository productRepository;

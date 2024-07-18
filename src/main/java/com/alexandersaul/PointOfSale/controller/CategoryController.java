@@ -1,7 +1,7 @@
 package com.alexandersaul.PointOfSale.controller;
 
 import com.alexandersaul.PointOfSale.dto.CategoryDTO;
-import com.alexandersaul.PointOfSale.service.CategoryService;
+import com.alexandersaul.PointOfSale.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import java.util.List;
 public class CategoryController {
 
     @Autowired
-    private CategoryService categoryService;
+    private ICategoryService categoryService;
 
     @GetMapping("/resource")
     public ResponseEntity<List<CategoryDTO>> getAllCategories () {

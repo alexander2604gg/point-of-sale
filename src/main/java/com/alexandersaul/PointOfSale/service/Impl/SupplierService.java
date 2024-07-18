@@ -1,13 +1,12 @@
 package com.alexandersaul.PointOfSale.service.Impl;
 
 import com.alexandersaul.PointOfSale.dto.SupplierDTO;
-import com.alexandersaul.PointOfSale.entities.Supplier;
-import com.alexandersaul.PointOfSale.service.SupplierService;
+import com.alexandersaul.PointOfSale.service.ISupplierService;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ISupplierService implements SupplierService {
+public class SupplierService implements ISupplierService {
 
 
     @Override

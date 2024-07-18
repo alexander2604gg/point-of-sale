@@ -1,11 +1,10 @@
 package com.alexandersaul.PointOfSale.service;
 
 import com.alexandersaul.PointOfSale.dto.SupplierDTO;
-import com.alexandersaul.PointOfSale.entities.Supplier;
 
 import java.util.List;
 
-public interface SupplierService {
+public interface ISupplierService {
 
     List<SupplierDTO> getAll();
     SupplierDTO save(SupplierDTO supplierDTO);

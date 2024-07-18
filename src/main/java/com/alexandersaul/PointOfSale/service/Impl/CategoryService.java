@@ -4,16 +4,14 @@ import com.alexandersaul.PointOfSale.dto.CategoryDTO;
 import com.alexandersaul.PointOfSale.entities.Category;
 import com.alexandersaul.PointOfSale.mapper.CategoryMapper;
 import com.alexandersaul.PointOfSale.repository.CategoryRepository;
-import com.alexandersaul.PointOfSale.service.CategoryService;
+import com.alexandersaul.PointOfSale.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-public class ICategoryService implements CategoryService {
+public class CategoryService implements ICategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
