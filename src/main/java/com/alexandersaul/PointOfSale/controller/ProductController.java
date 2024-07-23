@@ -5,6 +5,7 @@ import com.alexandersaul.PointOfSale.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +19,14 @@ public class ProductController {
     private IProductService productService;
 
     @GetMapping("/resource")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<List<ProductDTO>> getAllProducts (){
         List<ProductDTO> productDTOList = productService.getAll();
         return ResponseEntity.ok(productDTOList);
     }
 
     @PostMapping("/resource")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<ProductDTO> saveProduct (@RequestBody ProductDTO productDTO) {
 
         if(productDTO == null){
@@ -41,6 +44,7 @@ public class ProductController {
     }
 
     @DeleteMapping("resource/{id}")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         try {
             productService.delete(id);
