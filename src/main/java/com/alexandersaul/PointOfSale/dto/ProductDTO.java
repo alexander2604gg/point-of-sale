@@ -1,8 +1,6 @@
 package com.alexandersaul.PointOfSale.dto;
 
 import com.alexandersaul.PointOfSale.entities.Category;
-import com.alexandersaul.PointOfSale.entities.ProductSupplier;
-import com.alexandersaul.PointOfSale.entities.Supplier;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,5 +19,6 @@ public class ProductDTO {
     private String name;
     private BigDecimal price;
     private Category category;
+    private int stock;
 
 }

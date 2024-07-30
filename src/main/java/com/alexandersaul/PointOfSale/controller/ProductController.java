@@ -2,6 +2,7 @@ package com.alexandersaul.PointOfSale.controller;
 
 import com.alexandersaul.PointOfSale.dto.ProductDTO;
 import com.alexandersaul.PointOfSale.service.IProductService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,20 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
 
+    }
+
+    @PutMapping("/resource/{id}")
+    @PreAuthorize("permitAll()")
+    public ResponseEntity<ProductDTO> updateProduct (@PathVariable long id , @RequestBody ProductDTO productDTO) {
+        if (productDTO == null){
+            return ResponseEntity.badRequest().build();
+        }
+        ProductDTO updatedProductDTO = productService.update(productDTO , id);
+        if (updatedProductDTO != null){
+            return ResponseEntity.ok(updatedProductDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("resource/{id}")

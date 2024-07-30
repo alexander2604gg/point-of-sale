@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.logging.log4j.util.Lazy;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -16,7 +17,6 @@ import java.util.Set;
 @Entity
 @Table(name = "Product")
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -30,6 +30,7 @@ public class Product {
     private Category category;
     @OneToMany(mappedBy = "product")
     private Set<ProductSupplier> productSuppliers;
-
+    @OneToOne (mappedBy = "product" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private Inventory inventory;
 }
 
