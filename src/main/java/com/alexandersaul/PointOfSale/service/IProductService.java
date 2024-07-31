@@ -11,5 +11,7 @@ public interface IProductService {
     ProductDTO update(ProductDTO product , long id);
     ProductDTO findById (long id);
     void delete(Long id);
+    ProductDTO findProductByName (String name);
+    List<ProductDTO> findProductByCategoryName (String categoryName);
 
 }

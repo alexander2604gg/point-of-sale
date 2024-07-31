@@ -26,6 +26,28 @@ public class ProductController {
         return ResponseEntity.ok(productDTOList);
     }
 
+    @GetMapping("resource/name/{name}")
+    @PreAuthorize("permitAll()")
+    public ResponseEntity<ProductDTO> findProductByName (@PathVariable String name){
+        ProductDTO productDTO = productService.findProductByName(name);
+        if (productDTO!=null){
+            return ResponseEntity.ok(productDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("resource/category/{categoryName}")
+    @PreAuthorize("permitAll()")
+    public ResponseEntity<List<ProductDTO>> findProductByCategoryName (@PathVariable String categoryName){
+        List<ProductDTO> productDTO = productService.findProductByCategoryName(categoryName);
+        if (productDTO!=null){
+            return ResponseEntity.ok(productDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("/resource")
     @PreAuthorize("permitAll()")
     public ResponseEntity<ProductDTO> saveProduct (@RequestBody ProductDTO productDTO) {
@@ -68,6 +90,11 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+
+
+
+
 
 
 }

@@ -93,4 +93,21 @@ public class ProductService implements IProductService {
     public void delete(Long id) {
         productRepository.deleteById(id);
     }
+
+    @Override
+    public ProductDTO findProductByName(String name) {
+        Product product = productRepository.findProductByName(name);
+        if (product!=null){
+            return productMapper.productToProductDTO(product);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<ProductDTO> findProductByCategoryName(String categoryName) {
+        List<Product> productList = productRepository.findProductByCategoryName(categoryName);
+        return productList.stream().map(productMapper::productToProductDTO)
+                .toList();
+    }
 }
