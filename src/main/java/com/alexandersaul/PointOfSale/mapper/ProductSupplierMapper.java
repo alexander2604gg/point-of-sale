@@ -1,6 +1,7 @@
 package com.alexandersaul.PointOfSale.mapper;
 
 import com.alexandersaul.PointOfSale.dto.ProductSupplierDTO;
+import com.alexandersaul.PointOfSale.dto.SupplierWithProductsDTO;
 import com.alexandersaul.PointOfSale.entities.ProductSupplier;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
