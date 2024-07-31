@@ -1,6 +1,7 @@
 package com.alexandersaul.PointOfSale.service.Impl;
 
 import com.alexandersaul.PointOfSale.dto.InventoryDTO;
+import com.alexandersaul.PointOfSale.dto.ProductDTO;
 import com.alexandersaul.PointOfSale.entities.Inventory;
 import com.alexandersaul.PointOfSale.entities.Product;
 import com.alexandersaul.PointOfSale.mapper.InventoryMapper;
@@ -9,6 +10,8 @@ import com.alexandersaul.PointOfSale.repository.ProductRepository;
 import com.alexandersaul.PointOfSale.service.IInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class InventoryService implements IInventoryService {
@@ -48,6 +51,22 @@ public class InventoryService implements IInventoryService {
         inventory = inventoryRepository.save(inventory);
 
         return inventoryMapper.inventoryToInventoryDTO(inventory);
+    }
+
+    @Override
+    public InventoryDTO addStock(long productId, int stockAdded) {
+
+        Optional<Product> productOptional = productRepository.findById(productId);
+
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            int newStock = product.getInventory().getStock() + stockAdded;
+            Inventory inventory = product.getInventory();
+            inventory.setStock(newStock);
+            return inventoryMapper.inventoryToInventoryDTO(inventoryRepository.save(inventory));
+        } else {
+            return null;
+        }
     }
 
 

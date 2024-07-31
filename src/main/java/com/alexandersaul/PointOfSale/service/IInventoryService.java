@@ -6,4 +6,6 @@ public interface IInventoryService {
 
     InventoryDTO findByProductName (String productName);
     InventoryDTO save (InventoryDTO inventoryDTO);
+    InventoryDTO addStock (long productId , int stockAdded);
+
 }

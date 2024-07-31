@@ -34,5 +34,15 @@ public class InventoryController {
         }
     }
 
+    @PutMapping ("resource/{productId}/{stockAdded}")
+    public ResponseEntity<InventoryDTO> addStock (@PathVariable long productId , @PathVariable int stockAdded) {
+        InventoryDTO inventoryDTO = inventoryService.addStock(productId,stockAdded);
+        if (inventoryDTO != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(inventoryDTO);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
 }
